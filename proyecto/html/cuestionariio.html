@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="questionsForm">
+<label>1. ¿Qué es la energía limpia?</label> <br>
+ <input type="text" name="preg" id=""> <br>
+
+<label >2. ¿Qué ventaja tiene la energía solar?</label> <br>
+<input type="text" name="pregunta2" id=""> <br>
+
+<label >3. ¿Cómo se obtiene la energía eólica?</label> <br>
+<input type="text" name="pregunta3" id=""><br>
+
+<label>4. ¿Qué es la energía hidroeléctrica?</label> <br>
+<input type="text" name="pregunta4" id=""><br>
+
+<label>5¿Qué beneficio ambiental tienen las energías limpias?</label> <br>
+<input type="text" name="pregunta5" id=""><br>
+
+<label>6. ¿Qué es la energía eolica?</label> <br>
+<input type="text" name="pregunta6" id=""><br>
+
+<label >7. ¿Qué es la energia solar?</label> <br>
+<input type="text" name="pregunta7" id=""><br>
+
+<label>8. ¿como adquerimos la energia del sol?</label> <br>
+<input type="text" name="pregunta8" id=""><br>
+
+<label>9. ¿Cuál es un desafío de las energías limpias?</label> <br>
+<input type="text" name="pregunta9" id=""><br>
+
+<label>10. ¿Por qué son importantes las energías limpias?</label> <br>
+<input type="text" name="pregunta10" id=""><br>
+
+<button type="button" onclick="guardarRespuestas()">Guardar Respuestas</button>
+    </form>
+    <script>
+        function guardarRespuestas() {
+            const responsesContainer = document.getElementById('responsesContainer');
+            responsesContainer.innerHTML = '<h2>Respuestas Guardadas</h2>';
+
+            for (let i = 1; i <= 10; i++) {
+                const response = document.getElementById('preg' + i).value;
+                const responseBox = document.createElement('div');
+                responseBox.className = 'response-box';
+                responseBox.textContent = `Respuesta ${i}: ${response}`;
+                responsesContainer.appendChild(responseBox);
+            }
+        }
+    </script>
+</body>
+</html>
