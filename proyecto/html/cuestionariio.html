@@ -4,52 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
     <form id="questionsForm">
-<label>1. ¿Qué es la energía limpia?</label> <br>
- <input type="text" name="preg" id=""> <br>
+        <!-- Preguntas y opciones -->
+        <label>1. ¿Cuál de las siguientes es una ventaja principal de la energía solar?</label> <br>
+        <input type="radio" name="pregunta1" value="a"> a) Funciona en cualquier tipo de clima, incluso en días nublados. <br>
+        <input type="radio" name="pregunta1" value="b"> b) No produce emisiones de gases de efecto invernadero durante su funcionamiento. <br>
+        <input type="radio" name="pregunta1" value="c"> c) Requiere grandes cantidades de agua para su funcionamiento. <br>
 
-<label >2. ¿Qué ventaja tiene la energía solar?</label> <br>
-<input type="text" name="pregunta2" id=""> <br>
+        <label>2. ¿Cuál es el principio básico detrás de la energía hidroeléctrica?</label> <br>
+        <input type="radio" name="pregunta2" value="a"> a) Utiliza el calor del sol para calentar agua y generar vapor. <br>
+        <input type="radio" name="pregunta2" value="b"> b) Aprovecha la energía cinética del agua en movimiento para generar electricidad. <br>
+        <input type="radio" name="pregunta2" value="c"> c) Emplea la fuerza del viento para mover turbinas. <br>
 
-<label >3. ¿Cómo se obtiene la energía eólica?</label> <br>
-<input type="text" name="pregunta3" id=""><br>
+        <label>3. ¿Cómo se genera la energía geotérmica?</label> <br>
+        <input type="radio" name="pregunta3" value="a"> a) Capturando la energía del movimiento de las olas del mar. <br>
+        <input type="radio" name="pregunta3" value="b"> b) Utilizando el calor del interior de la Tierra. <br>
+        <input type="radio" name="pregunta3" value="c"> c) Convirtiendo la biomasa en electricidad mediante combustión. <br>
 
-<label>4. ¿Qué es la energía hidroeléctrica?</label> <br>
-<input type="text" name="pregunta4" id=""><br>
+        <label>4. ¿Qué característica define a la energía eólica?</label> <br>
+        <input type="radio" name="pregunta4" value="a"> a) Usa el viento para mover turbinas que generan electricidad. <br>
+        <input type="radio" name="pregunta4" value="b"> b) Se obtiene de la descomposición de materiales orgánicos. <br>
+        <input type="radio" name="pregunta4" value="c"> c) Aprovecha la luz del sol mediante paneles fotovoltaicos. <br>
 
-<label>5¿Qué beneficio ambiental tienen las energías limpias?</label> <br>
-<input type="text" name="pregunta5" id=""><br>
+        <label>5. ¿Qué es el hidrógeno verde?</label> <br>
+        <input type="radio" name="pregunta5" value="a"> a) Hidrógeno producido mediante electrólisis utilizando energía renovable. <br>
+        <input type="radio" name="pregunta5" value="b"> b) Hidrógeno extraído del carbón mediante gasificación. <br>
+        <input type="radio" name="pregunta5" value="c"> c) Hidrógeno generado a partir de residuos orgánicos en plantas de biomasa. <br>
 
-<label>6. ¿Qué es la energía eolica?</label> <br>
-<input type="text" name="pregunta6" id=""><br>
+        <label>6. ¿Cuál de las siguientes es una ventaja de la energía de biomasa?</label> <br>
+        <input type="radio" name="pregunta6" value="a"> a) No produce dióxido de carbono cuando se quema. <br>
+        <input type="radio" name="pregunta6" value="b"> b) Es una fuente de energía renovable y puede ayudar a reducir los residuos. <br>
+        <input type="radio" name="pregunta6" value="c"> c) No requiere ningún tipo de procesamiento antes de su uso. <br>
 
-<label >7. ¿Qué es la energia solar?</label> <br>
-<input type="text" name="pregunta7" id=""><br>
+        <label>7. ¿Cómo se genera la energía mareomotriz?</label> <br>
+        <input type="radio" name="pregunta7" value="a"> a) A través de la diferencia de temperatura en el océano. <br>
+        <input type="radio" name="pregunta7" value="b"> b) Mediante el aprovechamiento de la energía de las olas. <br>
+        <input type="radio" name="pregunta7" value="c"> c) Usando la energía de las mareas, aprovechando las diferencias de nivel del mar. <br>
 
-<label>8. ¿como adquerimos la energia del sol?</label> <br>
-<input type="text" name="pregunta8" id=""><br>
+        <label>8. ¿Cuál de las siguientes es una desventaja de la energía hidroeléctrica?</label> <br>
+        <input type="radio" name="pregunta8" value="a"> a) Es una fuente de energía intermitente que depende del clima. <br>
+        <input type="radio" name="pregunta8" value="b"> b) Puede causar impactos ambientales significativos en los ecosistemas acuáticos. <br>
+        <input type="radio" name="pregunta8" value="c"> c) Genera altos niveles de dióxido de carbono durante su operación. <br>
 
-<label>9. ¿Cuál es un desafío de las energías limpias?</label> <br>
-<input type="text" name="pregunta9" id=""><br>
-
-<label>10. ¿Por qué son importantes las energías limpias?</label> <br>
-<input type="text" name="pregunta10" id=""><br>
-
-<button type="button" onclick="guardarRespuestas()">Guardar Respuestas</button>
+        <button type="button" onclick="verificarRespuestas()">Verificar Respuestas</button>
     </form>
-    <script>
-        function guardarRespuestas() {
-            const responsesContainer = document.getElementById('responsesContainer');
-            responsesContainer.innerHTML = '<h2>Respuestas Guardadas</h2>';
+    <div id="responsesContainer"></div>
 
-            for (let i = 1; i <= 10; i++) {
-                const response = document.getElementById('preg' + i).value;
+    <script>
+        function verificarRespuestas() {
+            const correctAnswers = {
+                pregunta1: "b",
+                pregunta2: "b",
+                pregunta3: "b",
+                pregunta4: "a",
+                pregunta5: "a",
+                pregunta6: "b",
+                pregunta7: "c",
+                pregunta8: "b"
+            };
+
+            const responsesContainer = document.getElementById('responsesContainer');
+            responsesContainer.innerHTML = '<h2>Respuestas</h2>';
+
+            for (let i = 1; i <= Object.keys(correctAnswers).length; i++) {
+                const userAnswer = document.querySelector('input[name="pregunta' + i + '"]:checked');
+                const correctAnswer = correctAnswers['pregunta' + i];
                 const responseBox = document.createElement('div');
                 responseBox.className = 'response-box';
-                responseBox.textContent = `Respuesta ${i}: ${response}`;
+
+                if (userAnswer) {
+                    const userResponse = userAnswer.value;
+                    responseBox.textContent = `Pregunta ${i}: Tu respuesta - ${userResponse}.`;
+                    if (userResponse === correctAnswer) {
+                        responseBox.textContent += ' ¡Correcto!';
+                        responseBox.style.color = 'green'; // Respuesta correcta
+                    } else {
+                        responseBox.textContent += ` Respuesta correcta - ${correctAnswer}.`;
+                        responseBox.style.color = 'red'; // Respuesta incorrecta
+                    }
+                } else {
+                    responseBox.textContent = `Pregunta ${i}: No has seleccionado ninguna respuesta.`;
+                    responseBox.style.color = 'orange'; // No se seleccionó ninguna respuesta
+                }
+
                 responsesContainer.appendChild(responseBox);
             }
         }
