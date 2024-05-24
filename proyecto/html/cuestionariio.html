@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="fisica.html"></a></li>
+        </ul>
+    </nav>
     <form id="questionsForm">
         <!-- Preguntas y opciones -->
         <label>1. ¿Cuál de las siguientes es una ventaja principal de la energía solar?</label> <br>
@@ -77,7 +82,7 @@
 
                 if (userAnswer) {
                     const userResponse = userAnswer.value;
-                    responseBox.textContent = `Pregunta ${i}: Tu respuesta - ${userResponse}.`;
+                    responseBox.textContent = Pregunta ${i}: Tu respuesta - ${userResponse}.;
                     if (userResponse === correctAnswer) {
                         responseBox.textContent += ' ¡Correcto!';
                         responseBox.style.color = 'green'; // Respuesta correcta
@@ -86,7 +91,7 @@
                         responseBox.style.color = 'red'; // Respuesta incorrecta
                     }
                 } else {
-                    responseBox.textContent = `Pregunta ${i}: No has seleccionado ninguna respuesta.`;
+                    responseBox.textContent = Pregunta ${i}: No has seleccionado ninguna respuesta.;
                     responseBox.style.color = 'orange'; // No se seleccionó ninguna respuesta
                 }
 
