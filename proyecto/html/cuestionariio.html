@@ -12,7 +12,12 @@
             <li><a href="fisica.html"></a></li>
         </ul>
     </nav>
-    <form id="questionsForm">
+    <!-- Agregado método POST y acción hacia submit.php -->
+    <form id="questionsForm" method="POST" action="enlaceBD.php">
+        <!-- Campo para el nombre del usuario -->
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
         <!-- Preguntas y opciones -->
         <label>1. ¿Cuál de las siguientes es una ventaja principal de la energía solar?</label> <br>
         <input type="radio" name="pregunta1" value="a"> a) Funciona en cualquier tipo de clima, incluso en días nublados. <br>
@@ -54,7 +59,10 @@
         <input type="radio" name="pregunta8" value="b"> b) Puede causar impactos ambientales significativos en los ecosistemas acuáticos. <br>
         <input type="radio" name="pregunta8" value="c"> c) Genera altos niveles de dióxido de carbono durante su operación. <br>
 
+        <!-- Botón para verificar respuestas (ya existente) -->
         <button type="button" onclick="verificarRespuestas()">Verificar Respuestas</button>
+        <!-- Nuevo botón para enviar el formulario -->
+        <button type="submit">Enviar Respuestas</button>
     </form>
     <div id="responsesContainer"></div>
 
@@ -82,7 +90,7 @@
 
                 if (userAnswer) {
                     const userResponse = userAnswer.value;
-                    responseBox.textContent = Pregunta ${i}: Tu respuesta - ${userResponse}.;
+                    responseBox.textContent = `Pregunta ${i}: Tu respuesta - ${userResponse}.`;
                     if (userResponse === correctAnswer) {
                         responseBox.textContent += ' ¡Correcto!';
                         responseBox.style.color = 'green'; // Respuesta correcta
@@ -91,7 +99,7 @@
                         responseBox.style.color = 'red'; // Respuesta incorrecta
                     }
                 } else {
-                    responseBox.textContent = Pregunta ${i}: No has seleccionado ninguna respuesta.;
+                    responseBox.textContent = `Pregunta ${i}: No has seleccionado ninguna respuesta.`;
                     responseBox.style.color = 'orange'; // No se seleccionó ninguna respuesta
                 }
 
