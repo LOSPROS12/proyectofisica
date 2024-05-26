@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos Guardados</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="df.html">Formulario</a></li>
+            <li><a href="datos.html">Ver Datos</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Datos Guardados</h1>
+        <table id="tablaDatos">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Email</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyDatos">
+                <!-- Aquí se mostrarán los datos guardados -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Función para cargar los datos desde localStorage
+        function cargarDatosLocalStorage() {
+            var datos = localStorage.getItem("datosGuardados");
+            if (datos) {
+                datos = JSON.parse(datos);
+                var tbody = document.getElementById("tbodyDatos");
+                tbody.innerHTML = "";
+                datos.forEach(function(dato, index) {
+                    var fila = document.createElement("tr");
+                    fila.innerHTML = `
+                        <td>${dato.nombre}</td>
+                        <td>${dato.edad}</td>
+                        <td>${dato.email}</td>
+                        <td>
+                            <button class="icon-button" onclick="editarFila(${index})">✏️</button>
+                            <button class="icon-button" onclick="eliminarFila(${index})">🗑️</button>
+                        </td>
+                    `;
+                    tbody.appendChild(fila);
+                });
+            }
+        }
+
+        // Función para editar una fila
+        function editarFila(index) {
+            var datos = JSON.parse(localStorage.getItem("datosGuardados"));
+            var dato = datos[index];
+            
+            localStorage.setItem("datoEditando", JSON.stringify({ index: index, dato: dato }));
+
+            // Redirigir al formulario con datos para editar
+            window.location.href = "formulario.html";
+        }
+
+        // Función para eliminar una fila
+        function eliminarFila(index) {
+            var datos = JSON.parse(localStorage.getItem("datosGuardados"));
+            datos.splice(index, 1);
+            localStorage.setItem("datosGuardados", JSON.stringify(datos));
+            cargarDatosLocalStorage();
+        }
+
+        // Cargar los datos al cargar la página
+        cargarDatosLocalStorage();
+    </script>
+</body>
+</html>
